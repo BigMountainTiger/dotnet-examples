@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,10 +13,8 @@ namespace b_01_entity_framework.Example_1 {
     public DbSet<Student> Student { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      var constr = "Server=database-sql-server.ckvomoeauj3q.us-east-1.rds.amazonaws.com;"
-        + "Database=experiment_db;"
-        + "User Id=admin;"
-        + "Password=Pass1234";
+      //var constr = "Server=database-sql-server.ckvomoeauj3q.us-east-1.rds.amazonaws.com;Database=experiment_db;User Id=admin;Password=Pass1234";
+      var constr = Environment.GetEnvironmentVariable("CSTR");
 
       optionsBuilder.UseSqlServer(constr);
     }
