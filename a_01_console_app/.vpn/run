@@ -1,5 +1,6 @@
 #!/bin/bash
 
 # sudo apt-get install openvpn
-sudo openvpn --config ~/.vpn/client.ovpn
+# ps -f | grep openvpn
+sudo openvpn --config ~/.vpn/client.ovpn --daemon
 
