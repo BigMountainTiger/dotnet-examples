@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dotenv.net;
+
+using System;
 using b_01_entity_framework.Example_1;
 
 namespace b_01_entity_framework
@@ -14,7 +16,8 @@ namespace b_01_entity_framework
         }
         static void Main(string[] args)
         {
-            Example_1();
+          DotEnv.Config();
+          Example_1();
         }
     }
 }
