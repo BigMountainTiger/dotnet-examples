@@ -1,4 +1,3 @@
-using dotenv.net;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
