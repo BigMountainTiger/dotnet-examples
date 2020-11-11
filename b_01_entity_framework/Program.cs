@@ -20,6 +20,20 @@ namespace b_01_entity_framework
           }
         }
 
+        private static void Test_List_Take_More_Than_Available() {
+          var l = new List<int>();
+          l.Add(1);
+          l.Add(2);
+          l.Add(3);
+          l.Add(4);
+          l.Add(5);
+
+          var ll = l.Take(100);
+
+          foreach(var i in ll) {
+            Console.WriteLine(i);
+          }
+        }
         private static async Task Example_2_Load_UnusedDataOrder() {
           var orderId = 87746;
           List<UnusedDataOrder> data = null;
@@ -43,6 +57,8 @@ namespace b_01_entity_framework
           DotEnv.Config();
 
           //Example_1();
+          //Test_List_Take_More_Than_Available();
+          
           Example_2_Load_UnusedDataOrder().Wait();
         }
     }
