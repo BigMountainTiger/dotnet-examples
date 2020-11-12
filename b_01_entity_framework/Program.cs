@@ -42,6 +42,7 @@ namespace b_01_entity_framework
           {
             data = await context.UnusedDataOrder
             .Where( x => x.OrderId == orderId )
+            .Where( x => TestID.Test_IDS.Contains(x.CorelogicDataId))
             .ToListAsync();
           }
 
