@@ -53,14 +53,32 @@ namespace b_01_entity_framework
           Console.WriteLine($"Total count = {data.Count()}");
         }
 
+        private static async Task Example_2_Load_UnusedData() {
+          List<UnusedData> data = null;
+
+          using (var context = new Example2Context())
+          {
+            data = await context.UnusedData
+            .Where( x => TestID.Test_IDS.Contains(x.CorelogicDataID))
+            .ToListAsync();
+          }
+
+          foreach (var d in data) {
+            Console.WriteLine($"ID = {d.CorelogicDataID}, F-Name = {d.Property_Address_Full}");
+          }
+
+          Console.WriteLine($"Total count = {data.Count()}");
+        }
+
         static void Main(string[] args)
         {
           DotEnv.Config();
 
           //Example_1();
           //Test_List_Take_More_Than_Available();
-          
-          Example_2_Load_UnusedDataOrder().Wait();
+          //Example_2_Load_UnusedDataOrder().Wait();
+
+          Example_2_Load_UnusedData().Wait();
         }
     }
 }
