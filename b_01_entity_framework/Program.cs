@@ -41,6 +41,7 @@ namespace b_01_entity_framework
           //A_Example2_Test.Load_UnusedData().Wait();
           //A_Example2_Test.Load_DataProgramtype().Wait();
 
+          //A_Example2_JOIN_Test
           A_Example2_JOIN_Test.Test().Wait();
         }
     }
