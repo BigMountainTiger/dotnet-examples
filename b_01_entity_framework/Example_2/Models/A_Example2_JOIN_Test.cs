@@ -44,7 +44,7 @@ namespace b_01_entity_framework.Example_2 {
           Console.WriteLine($"{d.CorelogicDataID} - {d.UsageCount} - {d.LastUsedDate}");
         }
 
-        Console.WriteLine($"Count = {data.Count()}");
+        Console.WriteLine("\n" + $"Count = {data.Count()}");
       }
 
     }
