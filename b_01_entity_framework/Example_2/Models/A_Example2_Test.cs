@@ -49,10 +49,12 @@ namespace b_01_entity_framework.Example_2 {
 
       using (var context = new Example2Context())
       {
-        data = await context.DataProgramtype
+        var query = context.DataProgramtype
         .Where(x => TestID.Test_IDS.Contains(x.CorelogicDataID))
-        .Where(x => x.ProgramTypeID == 6)
-        .ToListAsync();
+        .Where(x => x.ProgramTypeID == 6);
+
+        // Console.WriteLine(query.ToQueryString());
+        data = await query.ToListAsync();
       }
 
       foreach (var d in data) {
