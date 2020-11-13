@@ -35,7 +35,7 @@ namespace b_01_entity_framework.Example_2 {
               UsageCount = i.Count(),
               LastUsedDate = i.Max()
             }
-          );
+          ).OrderBy(d => d.UsageCount);
 
         Console.WriteLine(query.ToQueryString());
         var data = await query.ToListAsync();
