@@ -23,9 +23,9 @@ namespace b_01_entity_framework.Example_2 {
         Console.WriteLine(query.ToQueryString());
         var data = await query.ToListAsync();
 
-        foreach(var d in data) {
-          Console.WriteLine($"{d.CorelogicDataID}");
-        }
+        // foreach(var d in data) {
+        //   Console.WriteLine($"{d.CorelogicDataID}");
+        // }
 
         Console.WriteLine($"Count = {data.Count()}");
       }
