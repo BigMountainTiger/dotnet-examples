@@ -63,6 +63,7 @@ namespace b_01_entity_framework.Example_2 {
 
       Console.WriteLine($"Total count = {data.Count()}");
     }
+
   }
 
 }
