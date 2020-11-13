@@ -15,18 +15,13 @@ namespace b_01_entity_framework.Example_2 {
       {
 
         var query = context.UnusedData
-          .Where(x => TestID.Test_IDS.Contains(x.CorelogicDataID));
+          .Where(x => TestID.Test_IDS.Contains(x.CorelogicDataID))
+          .Join(context.DataProgramtype.Where(x => x.ProgramTypeID == 6),
+            d => new { d.CorelogicDataID }, p => new { p.CorelogicDataID }, (d, p) => d
+          );
 
-        // Join(context.DataProgramtype.Where(i => i.ProgramTypeID == model.ProgramTypeId).Select(i => i.CorelogicDataID),
-        //             data => data.CorelogicDataID,
-        //             dataProgramtype => dataProgramtype,
-        //             (data, dataProgramtype) => data)
-
-        // Console.WriteLine(query.ToQueryString());
-        var data = await query
-          .Select( x => new {
-            x.CorelogicDataID
-          }).ToListAsync();
+        Console.WriteLine(query.ToQueryString());
+        var data = await query.ToListAsync();
 
         foreach(var d in data) {
           Console.WriteLine($"{d.CorelogicDataID}");
