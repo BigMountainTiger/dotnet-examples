@@ -70,6 +70,24 @@ namespace b_01_entity_framework
           Console.WriteLine($"Total count = {data.Count()}");
         }
 
+        private static async Task Example_2_Load_DataProgramtype() {
+          List<DataProgramtype> data = null;
+
+          using (var context = new Example2Context())
+          {
+            data = await context.DataProgramtype
+            .Where(x => TestID.Test_IDS.Contains(x.CorelogicDataID))
+            .Where(x => x.ProgramTypeID == 6)
+            .ToListAsync();
+          }
+
+          foreach (var d in data) {
+            Console.WriteLine($"ID = {d.CorelogicDataID}, F-Name = {d.ProgramTypeID}");
+          }
+
+          Console.WriteLine($"Total count = {data.Count()}");
+        }
+
         static void Main(string[] args)
         {
           DotEnv.Config();
@@ -77,8 +95,9 @@ namespace b_01_entity_framework
           //Example_1();
           //Test_List_Take_More_Than_Available();
           //Example_2_Load_UnusedDataOrder().Wait();
+          //Example_2_Load_UnusedData().Wait();
 
-          Example_2_Load_UnusedData().Wait();
+          Example_2_Load_DataProgramtype().Wait();
         }
     }
 }
