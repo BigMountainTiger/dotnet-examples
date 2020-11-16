@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using b_01_entity_framework.Example_1;
 using b_01_entity_framework.Example_2;
+using b_01_entity_framework.Example_2.DG_Test;
 
 namespace b_01_entity_framework
 {

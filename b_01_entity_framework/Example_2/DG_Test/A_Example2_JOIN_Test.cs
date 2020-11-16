@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 using b_01_entity_framework.Example_2.Business_Models;
 
-namespace b_01_entity_framework.Example_2 {
+namespace b_01_entity_framework.Example_2.DG_Test {
 
   public class A_Example2_JOIN_Test {
 
