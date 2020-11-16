@@ -26,12 +26,14 @@ namespace b_01_entity_framework.Example_2 {
           ).SelectMany(i => i.dataOrders.DefaultIfEmpty(),
               (aggregate, dataOrder) => new {
                 aggregate.data.CorelogicDataID,
+                aggregate.data.Property_State,
                 DropDate = (DateTime?)dataOrder.DropDate
               }
-          ).GroupBy(i => new { i.CorelogicDataID },
+          ).GroupBy(i => new { i.CorelogicDataID, i.Property_State },
             i => i.DropDate
           ).Select(i => new {
               i.Key.CorelogicDataID,
+              i.Key.Property_State,
               UsageCount = i.Count(),
               LastUsedDate = i.Max()
             }
@@ -41,7 +43,7 @@ namespace b_01_entity_framework.Example_2 {
         var data = await query.ToListAsync();
 
         foreach(var d in data) {
-          Console.WriteLine($"{d.CorelogicDataID} - {d.UsageCount} - {d.LastUsedDate}");
+          Console.WriteLine($"{d.CorelogicDataID} - {d.Property_State} - {d.UsageCount} - {d.LastUsedDate}");
         }
 
         Console.WriteLine("\n" + $"Count = {data.Count()}");
