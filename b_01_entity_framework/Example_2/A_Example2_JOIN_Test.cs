@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
 
+using b_01_entity_framework.Example_2.Business_Models;
+
 namespace b_01_entity_framework.Example_2 {
 
   public class A_Example2_JOIN_Test {
@@ -31,9 +33,9 @@ namespace b_01_entity_framework.Example_2 {
               }
           ).GroupBy(i => new { i.CorelogicDataID, i.Property_State },
             i => i.DropDate
-          ).Select(i => new {
-              i.Key.CorelogicDataID,
-              i.Key.Property_State,
+          ).Select(i => new RecordItem() {
+              CorelogicDataID= i.Key.CorelogicDataID,
+              Property_State = i.Key.Property_State,
               UsageCount = i.Count(),
               LastUsedDate = i.Max()
             }
