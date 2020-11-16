@@ -9,7 +9,7 @@ using b_01_entity_framework.Example_2.Business_Models;
 
 namespace b_01_entity_framework.Example_2.DG_Test {
 
-  public class A_Example2_JOIN_Test {
+  public class DG_Test {
 
     private static IQueryable<RecordItem> GetQuery_1(Example2Context context) {
       int programTypeId = 6;
