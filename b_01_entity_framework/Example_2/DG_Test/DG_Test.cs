@@ -10,7 +10,7 @@ namespace b_01_entity_framework.Example_2.DG_Test {
         var operation = new DG();
 
         operation.Init();
-        operation.LoadItems();
+        operation.Test();
       });
     }
 

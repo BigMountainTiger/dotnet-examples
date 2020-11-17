@@ -13,6 +13,7 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
   public class DataRecord {
     public RecordItem Item { get; }
+    public List<DataGroup> EligibleGroups = new List<DataGroup>();
 
     public DataRecord(RecordItem item) {
       Item = item;
@@ -101,4 +102,32 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 //             await ApplyToleranceForAlignedJobsIfNeededAsync(orderDetailSurplusCollection, dataRecordCollection);
 
 //             return orderDetailSurplusCollection;
+//         }
+
+
+
+//  private async Task AppendEligibleRecordsToOrderDetailSurplusAsync(OrderDetailSurplus orderDetailSuplus, DataRecordCollection dataRecordCollection)
+//         {
+//             List<DataRecord> retrievedDataRecords = (await _unusedDataRepository.GetAsync(orderDetailSuplus.DataRetrievalModel))
+//                 .Select(i => new DataRecord(i))
+//                 .Select(dataRecordCollection.AddToCollection)
+//                 .ToList();
+
+//             orderDetailSuplus.Initialize(retrievedDataRecords);
+//         }
+
+
+
+// public void Initialize(List<DataRecord> eligibleRecords)
+//         {
+//             EligibleRecords?.ForEach(i => i.EligibleOrderDetails.Remove(this));
+
+//             eligibleRecords.ForEach(i => i.EligibleOrderDetails.Add(this));
+//             EligibleRecords = eligibleRecords;
+
+//             Surplus = eligibleRecords.Count - DataRetrievalModel.ItemCount;
+//             InitialSurplus = Surplus;
+
+//             ClearRecords();
+//             RefreshLeftoverRecords();
 //         }

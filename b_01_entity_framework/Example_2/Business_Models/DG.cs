@@ -11,27 +11,40 @@ namespace b_01_entity_framework.Example_2.Business_Models {
     private DataRecordCollection collection = new DataRecordCollection();
 
     public void Init() {
-      var g = new DataGroup();
-      Groups.Add(g);
-
-      g = new DataGroup();
-      Groups.Add(g);
+      for (var i = 0; i <= 1; i++) {
+        var g = new DataGroup();
+        Groups.Add(g);
+      }
     }
 
     public void LoadItems() {
 
       foreach(var g in Groups) {
 
-        var items = RecordLoader.Load();
-        foreach(var item in items) {
-
-          var record = new DataRecord(item);
-
-          collection.Add(record);
-        }
+        var items = RecordLoader.Load()
+          .Select(i => new DataRecord(i))
+          .Select(collection.Add)
+          .ToList();
+        
+        g.Initialize(items);
       }
 
-      Console.WriteLine(collection.GetAllRecords().Count());
+
+    }
+
+    public void Test() {
+
+      LoadItems();
+      
+      foreach(var g in Groups) {
+        Console.WriteLine(g.EligibleRecords.Count.ToString());
+      }
+
+      var gg = Groups[1];
+      foreach(var e in gg.EligibleRecords) {
+        Console.WriteLine(e.EligibleGroups.Count.ToString());
+      }
+
     }
 
   }
