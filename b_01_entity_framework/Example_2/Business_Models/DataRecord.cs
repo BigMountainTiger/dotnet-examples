@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace b_01_entity_framework.Example_2.Business_Models {
 
@@ -14,6 +16,26 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
     public DataRecord(RecordItem item) {
       Item = item;
+    }
+  }
+
+  public class DataRecordCollection {
+    private readonly Dictionary<int, DataRecord> records = new Dictionary<int, DataRecord>();
+
+    public List<DataRecord> GetAllRecords()
+    {
+        return new List<DataRecord>(records.Select(i => i.Value));
+    }
+    public DataRecord Add(DataRecord rd)
+    {
+      var id = rd.Item.CorelogicDataID;
+
+      if (records.ContainsKey(id)) {
+        return records[id];
+      }
+
+      records.Add(id, rd);
+      return rd;
     }
   }
 }
@@ -58,3 +80,25 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 //             return record;
 //         }
 //     }
+
+
+
+// public async Task<OrderDetailSurplusCollection> GetAsync(params DataGenerationDataRetrievalModel[] models)
+//         {
+//             DataRecordCollection dataRecordCollection = new DataRecordCollection();
+
+//             OrderDetailSurplusCollection orderDetailSurplusCollection = models.Select(i => new OrderDetailSurplus(i)).ToList();
+
+//             using (StopWatchWithLogger.NewLogger("AppendEligibleRecordsToOrderDetailSurplusAsync"))
+//                 foreach (OrderDetailSurplus orderDetailSurplus in orderDetailSurplusCollection)
+//                 {
+//                     await AppendEligibleRecordsToOrderDetailSurplusAsync(orderDetailSurplus, dataRecordCollection);
+//                 }
+
+//             PopulateOrderDetailSurpluses(orderDetailSurplusCollection, dataRecordCollection);
+
+//             await ApplyIndividualToleranceIfNeededAsync(orderDetailSurplusCollection, dataRecordCollection);
+//             await ApplyToleranceForAlignedJobsIfNeededAsync(orderDetailSurplusCollection, dataRecordCollection);
+
+//             return orderDetailSurplusCollection;
+//         }
