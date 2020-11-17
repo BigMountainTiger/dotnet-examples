@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-using b_01_entity_framework.Example_2.Business_Models.Database;
+using b_01_entity_framework.Example_2.Database;
 
 namespace b_01_entity_framework.Example_2.Business_Models {
 

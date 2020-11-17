@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
+using b_01_entity_framework.Example_2.Business_Models;
 
-namespace b_01_entity_framework.Example_2.Business_Models.Database {
+namespace b_01_entity_framework.Example_2.Database {
   public class RecordLoader {
     private static IQueryable<RecordItem> GetQuery_1(Example2Context context) {
       int programTypeId = 6;
