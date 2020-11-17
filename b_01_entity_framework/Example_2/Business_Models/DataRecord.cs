@@ -9,6 +9,13 @@ namespace b_01_entity_framework.Example_2.Business_Models {
     public DateTime? LastUsedDate { get; set; }
   }
 
+  public class DataRecord {
+    public RecordItem Item { get; }
+
+    public DataRecord(RecordItem item) {
+      Item = item;
+    }
+  }
 }
 
 // public sealed class DataRecord

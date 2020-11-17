@@ -6,7 +6,12 @@ namespace b_01_entity_framework.Example_2.DG_Test {
 
   public class DG_Test {
     public static async Task Test() {
-      await Task.Run(() => (new DG()).LoadItems());
+      await Task.Run(() => {
+        var operation = new DG();
+
+        operation.Init();
+        operation.LoadItems();
+      });
     }
 
   }
