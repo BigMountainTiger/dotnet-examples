@@ -5,7 +5,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace b_01_entity_framework.Example_2.Business_Models.Database {
-  public class LoadRecordItems {
+  public class RecordLoader {
     private static IQueryable<RecordItem> GetQuery_1(Example2Context context) {
       int programTypeId = 6;
 
