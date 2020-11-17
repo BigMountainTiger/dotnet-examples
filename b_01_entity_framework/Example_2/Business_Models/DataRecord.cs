@@ -13,6 +13,7 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
   public class DataRecord {
     public RecordItem Item { get; }
+    public DataGroup Owner { get; private set; }
     public List<DataGroup> EligibleGroups = new List<DataGroup>();
 
     public DataRecord(RecordItem item) {
