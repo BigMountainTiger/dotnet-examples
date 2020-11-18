@@ -8,7 +8,7 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
   public class DG {
     private List<DataGroup> Groups = new List<DataGroup>();
-    private DataRecordCollection collection = new DataRecordCollection();
+    private DataRecordCollection Collection = new DataRecordCollection();
 
     public void Init() {
       for (var i = 0; i <= 1; i++) {
@@ -23,7 +23,7 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
         var items = RecordLoader.Load()
           .Select(i => new DataRecord(i))
-          .Select(collection.Add)
+          .Select(Collection.Add)
           .ToList();
         
         g.Initialize(items);
@@ -33,9 +33,19 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
     public void FulFill() {
 
-      foreach(var g in Groups) {
+      var records = Collection
+        .GetAllRecords()
+        .OrderBy(i => i.EligibleGroups.Count)
+        .ToList();
 
-        // Not doing anything yet
+      foreach (var record in records)
+      {
+          var g = record.EligibleGroups
+            .Where(i => !i.IsFullfilled)
+            .OrderBy(i => i.Surplus)
+            .FirstOrDefault();
+
+          g?.AddRecord(record);
       }
     }
 
@@ -45,7 +55,11 @@ namespace b_01_entity_framework.Example_2.Business_Models {
       FulFill();
       
       foreach(var g in Groups) {
-        Console.WriteLine(g.EligibleRecords.Count.ToString());
+        
+        Console.WriteLine($"Need ItemCount - {g.ItemCount}");
+        Console.WriteLine($"EligibleRecords - {g.EligibleRecords.Count}");
+        Console.WriteLine($"Surplus - {g.Surplus}");
+        Console.WriteLine($"UsedRecords - {g.UsedRecords.Count}");
       }
 
     }

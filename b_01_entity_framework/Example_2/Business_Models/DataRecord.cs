@@ -16,9 +16,8 @@ namespace b_01_entity_framework.Example_2.Business_Models {
     public DataGroup Owner { get; private set; }
     public List<DataGroup> EligibleGroups = new List<DataGroup>();
 
-    public DataRecord(RecordItem item) {
-      Item = item;
-    }
+    public DataRecord(RecordItem item) { Item = item; }
+    public void SetOwner(DataGroup owner) { Owner = owner; }
   }
 
   public class DataRecordCollection {
