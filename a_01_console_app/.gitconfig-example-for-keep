@@ -1,0 +1,6 @@
+[credential]
+	helper = store
+[alias]
+	add-commit = !git add -A && git commit
+[core]
+	editor = vim
