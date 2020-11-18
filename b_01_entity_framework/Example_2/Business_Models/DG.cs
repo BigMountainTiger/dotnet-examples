@@ -12,7 +12,7 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
     public void Init() {
       for (var i = 0; i <= 1; i++) {
-        var g = new DataGroup();
+        var g = new DataGroup(25);
         Groups.Add(g);
       }
     }
@@ -33,18 +33,12 @@ namespace b_01_entity_framework.Example_2.Business_Models {
     }
 
     public void Test() {
-
+      Init();
       LoadItems();
       
       foreach(var g in Groups) {
         Console.WriteLine(g.EligibleRecords.Count.ToString());
       }
-
-      var gg = Groups[1];
-      foreach(var e in gg.EligibleRecords) {
-        Console.WriteLine(e.EligibleGroups.Count.ToString());
-      }
-
     }
 
   }

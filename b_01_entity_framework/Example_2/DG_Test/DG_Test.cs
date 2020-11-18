@@ -9,7 +9,6 @@ namespace b_01_entity_framework.Example_2.DG_Test {
       await Task.Run(() => {
         var operation = new DG();
 
-        operation.Init();
         operation.Test();
       });
     }
