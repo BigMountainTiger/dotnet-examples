@@ -29,16 +29,25 @@ namespace b_01_entity_framework.Example_2.Business_Models {
         g.Initialize(items);
       }
 
+    }
 
+    public void FulFill() {
+
+      foreach(var g in Groups) {
+
+        // Not doing anything yet
+      }
     }
 
     public void Test() {
       Init();
       LoadItems();
+      FulFill();
       
       foreach(var g in Groups) {
         Console.WriteLine(g.EligibleRecords.Count.ToString());
       }
+
     }
 
   }
