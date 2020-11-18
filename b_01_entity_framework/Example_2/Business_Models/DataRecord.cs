@@ -165,3 +165,29 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 //                     orderDetailSurplusCollection.ApplyRecursiveRedistribution();
 //             }
 //         }
+
+
+// public int Surplus { get; private set; }
+
+// public List<DataRecord> UsedRecords { get; private set; } = new List<DataRecord>();
+
+// public void AddRecord(DataRecord record, bool updateSurplus = true)
+//         {
+//             AverageUsageCount = !UsedRecords.Any()
+//                 ? record.Data.UsageCount
+//                 : (AverageUsageCount * UsedRecords.Count + record.Data.UsageCount) / (UsedRecords.Count + 1);
+
+//             AverageLastUsedDateDaysSince2010 = !UsedRecords.Any()
+//                 ? record.Data.LastUsedDateDaysSince2010
+//                 : (AverageLastUsedDateDaysSince2010 * UsedRecords.Count + record.Data.LastUsedDateDaysSince2010) / (UsedRecords.Count + 1);
+
+//             record.Owner?.RemoveRecord(record, updateSurplus);
+
+//             record.SetOwner(this);
+//             UsedRecords.Add(record);
+
+//             if (updateSurplus)
+//             {
+//                 record.EligibleOrderDetails.Where(i => i != this).ForEachElement(i => i.Surplus--);
+//             }
+//         }
