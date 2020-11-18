@@ -132,3 +132,36 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 //             ClearRecords();
 //             RefreshLeftoverRecords();
 //         }
+
+
+// private void PopulateOrderDetailSurpluses(OrderDetailSurplusCollection orderDetailSurplusCollection, DataRecordCollection dataRecordCollection)
+//         {
+//             using (StopWatchWithLogger.NewLogger("PopulateOrderDetailSurpluses"))
+//             {
+//                 List<DataRecord> dataRecords = dataRecordCollection
+//                     .GetAllRecords()
+//                     .OrderBy(i => i.EligibleOrderDetails.Count)
+//                     .ThenByPriority()
+//                     .ToList();
+
+//                 Log.Information($"total available records = {dataRecords.Count}.");
+
+//                 foreach (DataRecord dataRecord in dataRecords)
+//                 {
+//                     if (orderDetailSurplusCollection.IsFullyPopulated())
+//                         break;
+
+//                     OrderDetailSurplus orderDetail = dataRecord
+//                         .EligibleOrderDetails
+//                         .Where(i => !i.IsFullyPopulated)
+//                         .OrderBy(i => i.Surplus)
+//                         .ThenBy(i => i.DataRetrievalModel.OrderDetailId)
+//                         .FirstOrDefault();
+
+//                     orderDetail?.AddRecord(dataRecord);
+//                 }
+
+//                 using (StopWatchWithLogger.NewLogger("ApplyRecursiveRedistribution"))
+//                     orderDetailSurplusCollection.ApplyRecursiveRedistribution();
+//             }
+//         }
