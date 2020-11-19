@@ -12,7 +12,7 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
     public void Init() {
       for (var i = 0; i <= 1; i++) {
-        var g = new DataGroup(100);
+        var g = new DataGroup(25);
         Groups.Add(g);
       }
     }
