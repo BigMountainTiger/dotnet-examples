@@ -12,7 +12,7 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
     public void Init() {
       for (var i = 0; i <= 1; i++) {
-        var g = new DataGroup(25);
+        var g = new DataGroup(100);
         Groups.Add(g);
       }
     }
@@ -57,7 +57,7 @@ namespace b_01_entity_framework.Example_2.Business_Models {
       FulFill();
       
       foreach(var g in Groups) {
-        
+        Console.WriteLine();
         Console.WriteLine($"Need ItemCount - {g.ItemCount}");
         Console.WriteLine($"EligibleRecords - {g.EligibleRecords.Count}");
         Console.WriteLine($"Surplus - {g.Surplus}");
