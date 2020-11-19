@@ -3,6 +3,14 @@ using System.Linq;
 
 namespace b_01_entity_framework.Example_2.Business_Models {
 
+  public class DataGroups: List<DataGroup> {
+    public bool IsFullyPopulated => !(GetUnfulfilledGroups().Any());
+    public List<DataGroup> GetUnfulfilledGroups()
+    {
+      return this.Where(i => !i.IsFullfilled).ToList();
+    }
+  }
+
   public class DataGroup {
     public int ItemCount { get; set; }
     public int InitialSurplus { get; private set; }

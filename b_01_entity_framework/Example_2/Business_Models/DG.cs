@@ -7,7 +7,7 @@ using b_01_entity_framework.Example_2.Database;
 namespace b_01_entity_framework.Example_2.Business_Models {
 
   public class DG {
-    private List<DataGroup> Groups = new List<DataGroup>();
+    private DataGroups Groups = new DataGroups();
     private DataRecordCollection Collection = new DataRecordCollection();
 
     public void Init() {
@@ -40,6 +40,8 @@ namespace b_01_entity_framework.Example_2.Business_Models {
 
       foreach (var record in records)
       {
+          if (Groups.IsFullyPopulated) { break; }
+
           var g = record.EligibleGroups
             .Where(i => !i.IsFullfilled)
             .OrderBy(i => i.Surplus)
